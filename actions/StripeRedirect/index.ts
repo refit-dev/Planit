@@ -40,14 +40,14 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       const stripeSession = await stripe.checkout.sessions.create({
         success_url: settingsURL,
         cancel_url: settingsURL,
-        payment_method_types: ["card"],
+        allowed_payment_method_types: ["card"],
         mode: "subscription",
         billing_address_collection: "auto",
         customer_email: user.emailAddresses[0].emailAddress,
         line_items: [
           {
             price_data: {
-              currency: "INR",
+              currency: "inr",
               product_data: {
                 name: "Planit Pro",
                 description:
